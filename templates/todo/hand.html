@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Task.M_Memo</title>
+  <meta charset="utf-8">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="../../static/img/icon.png">
+  <!-- css -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css/home7.css' %}">
+  <script src="../../static/js/hand1.js"></script>
+  <script>
+    //コンストラクタ(手書きキャンバスのId名, 手書きキャンバスのクリアボタンのId名)
+    var mamHandwritten1 = new TMamHandwritten("drawCanvasId", "clearButtonId");
+    //登録するボタン押下時の設定
+    window.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("submitButtonId").addEventListener("click", function () {
+        mamHandwritten1.savePicture("");
+      });
+    });
+    window.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("submitButtonId2").addEventListener("click", function () {
+        mamHandwritten1.savePicture2("");
+      });
+    });
+    window.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("submitButtonId3").addEventListener("click", function () {
+        mamHandwritten1.savePicture3("");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header id="header">
+    <div class="wrapper">
+      <p>Task.M</p>
+      <nav>
+        <!-- アカウント名表示 -->
+        <ul>
+          {{ user.username }}さん
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインコンテンツまとめたもの -->
+  <div id="main">
+    <!-- 左メニュー -->
+    <div id="menu">
+      <ul>
+        <li><a href="../">ToDo</a></li>
+        <li><a href="../memo">メモ</a></li>
+      </ul>
+      <button type="submit" class="exit" onclick="location.href='../../'">退室</button>
+    </div>
+    <!-- 右側のコンテンツ -->
+    <div id="contents">
+      <div id="app">
+        <h1 id="tit">Memo<a class="change" href="../memo">　ーテキスト入力に変更ー</a></h1>
+        <div>
+          <div class="memo_content" id="hand_content">
+            <div>
+              <canvas name="image" class="canvas" id="drawCanvasId" style="border:1px solid #000;"></canvas>
+            </div>
+            <input type="button" id="clearButtonId" class="clear" value="クリア" />
+          </div>
+          <div class="btn_3">
+            <button type="button" onclick="chgImg()" value="1" id="submitButtonId" class="memo_btn1">投稿1</button>
+            <button type="button" onclick="chgImg2()" value="1" id="submitButtonId2" class="memo_btn1">投稿2</button>
+            <button type="button" onclick="chgImg3()" value="1" id="submitButtonId3" class="memo_btn1">投稿3</button>
+          </div>
+
+        </div>
+        <div class="img-box">
+          <img id="newImg">
+          <img id="newImg2">
+          <img id="newImg3">
+        </div>
+      </div><!-- /app -->
+    </div> <!-- /contents -->
+  </div><!-- /main -->
+
+</body>
+
+</html>

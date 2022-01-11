@@ -1,0 +1,60 @@
+/*　背景を青色にする */
+body{
+    background-color: #607AA7;
+}
+
+/* table内のテキストを左寄せにする*/
+tr {
+    text-align: left;
+}
+
+/* 内容を真ん中に */
+.content {
+    text-align: center;
+    position: absolute; /* 絶対指定 */
+    top: 50%;  /* 上の要素を中央配置 */
+    left: 50%; /* 左右の要素を中央配置 */
+    width: 600px;
+    height: 400px;
+    margin: -200px 0 0 -300px;
+    background-color: white;
+}
+
+/* ToDoの文字 */
+.title {
+    color: #607AA7;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* スペース */
+h1 {
+    font-size: 40px;
+}
+
+/* tableの行間調整 */
+table {
+    border-collapse: separate;
+    border-spacing: 0px 20px;
+    margin-bottom: 15px;
+}
+
+/*　フォームのテキストボックス大きさ */
+.text {
+    width: 300px;
+    height: 20px;
+}
+
+/* ボタンの色とサイズ調節*/
+.btn {
+    background-color: #607AA7;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+/*　アカウント新規登録はこちら*/
+.new {
+    color: #607AA7;
+    font-weight: bold;
+}

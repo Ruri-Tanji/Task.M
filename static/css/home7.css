@@ -1,0 +1,434 @@
+/*ヘッダー、左メニュー、コンテンツでわける*/    
+
+/* 全てのプロパティの余白とパディングをリセットする*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ヘッダー */
+#header {
+    width: 100%;
+    background-color: #607AA7;
+    height: 78px;
+}
+
+#header .wrapper {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ヘッダー左にapp名表示 */
+#header p {
+    float: left;
+    color: white;
+    margin-top: 22px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+/* ヘッダー右にアカウント名表示 */
+#header ul {
+    float: right;
+    color: white;
+    margin: 28px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 40px;
+}
+
+/* メニューとコンテンツを囲む */
+#main {
+    height: calc(100% - 78px);
+    overflow: hidden;
+    /* 親ボックスでフロート解除する*/
+    
+}
+
+html, body {
+    height: 100%;
+    background-color: #d8d9db;
+}
+
+/* 左メニュー */
+#menu {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background-color: #d8d9db;
+    z-index: 2;
+}
+
+ul {
+    margin-left: 80px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* 色を常時黒に、下線を消す */
+li a:link, li a:visited, li a:active {
+    color: black;
+    text-decoration: none;
+}
+
+li a:hover{
+    color: #607AA7;
+}
+
+/* 退室 */
+.exit {
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: #607AA7;
+    color: white;
+    width: 80px;
+    height: 30px;
+}
+
+/*　コンテンツ */
+#contents {
+    position: absolute; /* 絶対指定 */
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    min-height: calc(100% - 78px);
+    background-color: #ffffff;
+    z-index: 0;
+}
+
+#app {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#contents h1 {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #607AA7;
+}
+
+/* ToDoリスト */
+.wish_list {
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    padding: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px #ddd solid;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.wish_list thead {
+    background-color: #607AA7;
+    color: #fff;
+}
+
+.wish_list th {
+    margin-bottom: 9px;
+    padding: 13px 4.5vw;
+    border-left: 1px #8f8f8f solid;
+    font-weight: normal;
+}
+
+.wish_list th:first-child {
+    border-left-width: 0;
+}
+
+.wish_list tbody {
+    vertical-align: top;
+}
+
+.wish_list tbody td {
+    border-left: 1px #ddd solid;
+}
+
+.wish_list tbody td:first-child {
+    border-left-width: 0;
+}
+
+.wish_list_mobile {
+    display: none;
+}
+
+.wish_list th,
+.wish_list td {
+    display: table-cell;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+.wish_list tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+.wish_list td {
+    padding: 9px 15px;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+.wish_list .date {
+    width: 6em;
+}
+
+/* ToDo追加ボタン */
+.add {
+    font-weight: bold;
+    float: left;
+    margin-left: 40px;
+}
+
+.add:hover{
+    color: #607AA7;
+}
+
+/* pop up*/
+
+/* ポップアップウインドウの設定 */
+.popup {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 9999px rgba(99, 99, 99, 0.753);
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    max-width: 80vw;
+    width: 400px;
+    height: 300px;
+    margin: -150px 0 0 -260px;
+    padding: 1.3rem 4rem;
+    overflow-y: scroll;
+    z-index: 10;
+}
+
+/* チェックボックスの初期設定 */
+#popup-on {
+    display: none;
+}
+
+/* チェックされたらポップアップウインドウを開く */
+#popup-on:checked+.popup {
+    display: block;
+}
+
+
+/* 閉じるアイコン（右上） */
+.icon-close {
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* 開くボタン */
+.btn-open {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ポップアップの内容 */
+.popup-content {
+    margin: 20px auto 20px auto;
+    width: 95%;
+}
+
+/* ToDo追加の文字 */
+.popup-content p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #607AA7;
+    margin-top: -10px;
+    margin-bottom: 35px;
+}
+
+/*　入力情報全体 */
+.add_content {
+    margin-left: 15%;
+    margin-bottom: 5px;
+}
+
+/*　テキストフォームの大きさ、スペース調整 */
+.detail {
+    margin-bottom: 5px;
+    width: 250px;
+    height: 20px;
+}
+
+/* 登録ボタン */
+.btn {
+    margin-left: 30%;
+    background-color: #607AA7;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+/* メモ */
+/* テキスト */
+.memo_detail {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 60vw;
+    height: 45px;
+}
+
+/* 投稿ボタン */
+.memo_btn {
+    margin-left: 40px;
+    margin-bottom: 50px;
+    background-color: #607AA7;
+    color: white;
+    width: 110px;
+    height: 35px;
+}
+
+/* メモを表示 */
+.fusen{  
+    position:relative;
+    left: -40px;
+    bottom: 50px;
+    z-index:0;
+    list-style: none;
+}
+
+.fusen ul {
+    float: left;
+    width:300px;
+    list-style-type: none;
+    font-size: 0.9em;
+    padding: 1em;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    position: relative;
+    margin-bottom: -10px;
+    margin-right: -20px;
+    word-break:break-word;
+    /* グラデーションで折り目がついた感じに */
+    background: linear-gradient(to right, #cce4ff 0%, #c3daf5 0.5%, #c3daf5 13%, #cce4ff 16%);
+}
+
+.fusen ul::after{
+    content:"";
+    display:block;
+    position: absolute;
+    z-index: -1;
+    bottom: 5px;
+    right: 0;
+    height: 15px;
+    width: 99%;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+    transform: rotate(2deg);
+}
+
+/* 削除 */
+.fusen a{
+    margin-left: 270px;
+    font-size: 13px;
+    position: absolute;
+    margin-top: -29px;
+}
+
+/* 投稿日 */
+.fusen p{
+    font-size: 13px;
+    color: #5c5c5c;
+}
+
+/* 手書き入力 */
+#hand_content {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.canvas {
+    width: 600px;
+    height: 200px;
+}
+
+.clear {
+    position: relative;
+    top: -42px;
+    margin-left: 610px;
+    background-color: #5c5c5c;
+    color: white;
+    width: 110px;
+    height: 35px;
+}
+
+@media screen and (max-width: 890px){
+    .canvas {
+        width: 300px;
+        height: 200px;
+    }
+    .clear {
+        position: relative;
+        top: -42px;
+        margin-left: 310px;
+    }
+}
+
+.memo_btn1 {
+    margin-left: 10px;
+    background-color: #607AA7;
+    color: white;
+    width: 110px;
+    height: 35px;
+}
+
+.btn_3{
+    margin-left: 20px;
+}
+
+.img-box {
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+#newImg, #newImg2, #newImg3 {
+    border:1px solid #607AA7;
+    margin-right: 50px;
+    margin-bottom: 40px;
+}
+
+.change{
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.fusen a:link, .fusen a:visited, .fusen a:active {
+    color: black;
+    text-decoration: none;
+}
+
+.fusen a:hover{
+    color: #607AA7;
+}
+
+#tit a:link, #tit a:visited, #tit a:active {
+    color: black;
+    text-decoration: none;
+}
+
+#tit a:hover{
+    color: #607AA7;
+}

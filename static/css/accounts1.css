@@ -1,0 +1,67 @@
+/* span文を表示させない */
+span{
+  visibility: hidden;
+}
+
+/*　背景を青色にする */
+body{
+  background-color: #607AA7;
+}
+
+/* 内容を真ん中に */
+.content {
+  text-align: center;
+  position: absolute; /* 絶対指定 */
+  top: 50%;  /* 上の要素を中央配置 */
+  left: 50%; /* 左右の要素を中央配置 */
+  width: 600px;
+  height: 400px;
+  margin: -200px 0 0 -300px; /* widthとheightの半分の値にする*/
+  background-color: white;
+}
+
+/* アカウント新規登録の文字の位置変更 */
+#title {
+  text-align: center;
+  margin-top: 90px;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* tableの行間調整 */
+table {
+  border-collapse: separate;
+  border-spacing: 0px 20px;
+  margin-bottom: 15px;
+}
+
+/* ボタンの色とサイズ、位置調節*/
+.btn {
+  background-color: #607AA7;
+  color: white;
+  width: 150px;
+  height: 40px;
+  margin-left: 50%;
+  margin-top: 20px;
+}
+
+/* 内容文の位置調節(白枠内) */
+.create{
+  margin-top: 13%;
+  margin-left: 23%;
+}
+
+/*　登録完了後の表示の位置 */
+.ac {
+  margin-top: 120px;
+}
+
+/* ログイン画面に戻る */
+.back {
+  color: #607AA7;
+  font-weight: bold;
+  position: absolute;
+  top: 80%;
+  left: 36%;
+}

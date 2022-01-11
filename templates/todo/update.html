@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task管理_ToDo</title>
+    <meta charset="utf-8">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../../static/img/icon.png">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/update1.css' %}">
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header id="header">
+        <div class="wrapper">
+            <p>Task.M</p>
+            <nav>
+                <!-- アカウント名表示 -->
+                <ul>
+                    {{ user.username }}さん
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツまとめたもの -->
+    <div id="main">
+        <!-- 左メニュー -->
+        <div id="menu">
+            <ul>
+                <li><a href="../">ToDo</a></li>
+                <li><a href="">メモ</a></li>
+            </ul>
+            <button type="submit" class="exit" onclick="location.href='../'">退室</button>
+        </div>
+        <!-- 右側のコンテンツ -->
+        <div id="contents">
+            <!-- Todoリストの表示 -->
+            <div id="app">
+                <h1>ToDo</h1>
+                <div>
+                    <table class="wish_list">
+                        <thead>
+                            <!-- 概要 -->
+                            <tr>
+                                <th>タスク名</th>
+                                <th>締切</th>
+                                <th>詳細</th>
+                                <th>ー</th>
+                                <th>ー</th>
+                                <th>追加日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for todo_list in todo_lists %}
+                            <tr>
+                                <!-- タイトル表示 -->
+                                <td>{{ todo_list.title }}</td>
+                                <!-- 締切をMM/DDで表示-->
+                                <td>{{ todo_list.created.month }}/{{ todo_list.created.day}}</td>
+                                <!-- 詳細表示 -->
+                                <td>{{ todo_list.detail }}</td>
+                                <!-- update.htmlに飛ぶ -->
+                                <td><a href="{% url 'update' todo_list.id %}">編集</a></td>
+                                <!-- 状態を完了にし、画面から消す-->
+                                <td><a href="{% url 'delete' todo_list.id %}">完了</a></td>
+                                <!-- 投稿した時刻をMM/DDで表示 -->
+                                <td>{{ todo_list.now_time.month }}/{{ todo_list.now_time.day }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /app -->
+        </div><!-- contents -->
+    </div><!-- main -->
+
+    <!-- Todo編集画面 -->
+    <div class="popup">
+        <div class="popup-content">
+            <div>
+                <p class="top">ToDo編集</p>
+                <!-- 閉じるボタン -->
+                <p class="back_btn"><a href="../../todo">×</a></p>
+
+                <!-- viewsのupdate -->
+                <form action="{% url 'update' todo_list.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="add_content">
+                        <input type="text" name="title" id="title" placeholder="タイトル" value="{{todo_list.title}}"
+                            class="detail" />
+                        <br />
+                        <textarea name="detail" id="detail" placeholder="詳細"
+                            class="detail">{{diary.detail | linebreaksbr}}</textarea>
+                        <br />
+                        <input type="date" name="created" id="created" placeholder="締切"
+                            value="{{todo_list.created | date:'Y-m-d'}}" class="detail" />
+                        <br />
+                        <input type="text" name="map" id="map" placeholder="場所" value="{{todo_list.map}}"
+                            class="detail" />
+                        <br />
+                    </div><!-- /add_content -->
+                    <button type="submit" class="btn">登録</button>
+                </form>
+            </div>
+        </div><!-- /popup-content -->
+    </div><!-- popup -->
+</body>
+
+</html>

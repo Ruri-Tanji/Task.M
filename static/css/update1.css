@@ -1,0 +1,251 @@
+/*ヘッダー、左メニュー、コンテンツでわける*/    
+
+/* 全てのプロパティの余白とパディングをリセットする*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダー */
+#header {
+    width: 100%;
+    background-color: #607AA7;
+    height: 78px;
+}
+
+#header .wrapper {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ヘッダー左にapp名表示 */
+#header p {
+    float: left;
+    color: white;
+    margin-top: 22px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 40px;
+}
+
+/* ヘッダー右にアカウント名表示 */
+#header ul {
+    float: right;
+    color: white;
+    margin: 28px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 40px;
+}
+
+/* メニューとコンテンツを囲む */
+#main {
+    height: calc(100% - 78px);
+    overflow: hidden;
+    /* 親ボックスでフロート解除する*/
+    
+}
+
+html, body {
+    height: 100%;
+    background-color: #d8d9db;
+}
+
+/* 左メニュー */
+#menu {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background-color: #d8d9db;
+    z-index: 2;
+}
+
+ul {
+    margin-left: 80px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* 退室 */
+.exit {
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: #607AA7;
+    color: white;
+    width: 80px;
+    height: 30px;
+}
+
+/*　コンテンツ */
+#contents {
+    position: absolute; /* 絶対指定 */
+    margin-left: 200px;
+    width: calc(100% - 200px);
+    min-height: calc(100% - 78px);
+    background-color: #ffffff;
+    z-index: 0;
+}
+
+#app {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+#contents h1 {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #607AA7;
+}
+
+/* ToDoリスト */
+.wish_list {
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    padding: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px #ddd solid;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.wish_list thead {
+    background-color: #607AA7;
+    color: #fff;
+}
+
+.wish_list th {
+    margin-bottom: 9px;
+    padding: 13px 4.5vw;
+    border-left: 1px #8f8f8f solid;
+    font-weight: normal;
+}
+
+.wish_list th:first-child {
+    border-left-width: 0;
+}
+
+.wish_list tbody {
+    vertical-align: top;
+}
+
+.wish_list tbody td {
+    border-left: 1px #ddd solid;
+}
+
+.wish_list tbody td:first-child {
+    border-left-width: 0;
+}
+
+.wish_list_mobile {
+    display: none;
+}
+
+.wish_list th,
+.wish_list td {
+    display: table-cell;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+.wish_list tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+.wish_list td {
+    padding: 9px 15px;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+.wish_list .date {
+    width: 6em;
+}
+
+/* ToDo追加ボタン */
+.add {
+    font-weight: bold;
+    text-align: left;
+    margin-left: 40px;
+}
+
+/* pop up*/
+
+/* ポップアップウインドウの設定 */
+.popup {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 9999px rgba(99, 99, 99, 0.753);    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    max-width: 80vw;
+    width: 400px;
+    height: 300px;
+    margin: -150px 0 0 -260px;
+    padding: 1.3rem 4rem;
+}
+
+/* ポップアップの内容 */
+.popup-content {
+    margin: 20px auto 20px auto;
+    width: 95%;
+}
+
+/* 編集の文字 */
+.top{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #607AA7;
+    margin-top: -10px;
+    
+}
+
+/*　入力情報全体 */
+.add_content {
+    margin-left: 15%;
+    margin-bottom: 30px;
+}
+
+/*　テキストフォームの大きさ、スペース調整 */
+.detail {
+    margin-bottom: 5px;
+    width: 250px;
+    height: 20px;
+}
+
+/* 登録ボタン */
+.btn {
+    margin-left: 30%;
+    background-color: #607AA7;
+    color: white;
+    width: 150px;
+    height: 40px;
+}
+
+/*　戻るボタン */
+.back_btn{
+    margin-left: 400px;
+    margin-top: -52px;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* 色を常時黒に、下線を消す */
+a:link, a:visited, a:hover, a:active {
+    color: black;
+    text-decoration: none;
+}

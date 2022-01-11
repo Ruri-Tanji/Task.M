@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+    <title>Task.M_アカウント</title>
+    <meta charset="utf-8">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../../static/img/icon.png">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/accounts1.css' %}">
+</head>
+
+<body>
+    <div id="title">
+        アカウント新規登録
+    </div>
+
+    <div class="content">
+
+        <!-- 登録完了後 (accounts/views.py内のclass AccountCreate) -->
+        {% if AccountCreate %}
+        <div class="ac">
+            <h1>登録完了！</h1>
+            <script type="text/javascript">
+                setTimeout(function () {
+                    window.location.href = "{% url 'login' %}";
+                }, 3 * 1000);
+            </script>
+            <p>3秒後にジャンプします</p>
+        </div>
+
+        <!-- 登録完了していない場合 (初期画面) -->
+        {% else %}
+
+        <!-- 新規登録フォーム -->
+        <div class="create">
+            <table class="create_form">
+
+                <form name="signup_form" enctype="multipart/form-data" method="post">
+                    <!-- accounts/formsを参照?-->
+                    {% csrf_token %}
+                    <tr>
+                        <td>
+                            <label for="userid">ユーザーID　</label>
+                        </td>
+                        <td>
+                            <!-- DBのfields -->
+                            {{ account_form.username }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">メールアドレス　</label>
+                        </td>
+                        <td>
+                            {{ account_form.email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password">パスワード　</label>
+                        </td>
+                        <td>
+                            {{ account_form.password }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="btn" type="submit" formaction="" value="登　録">
+                        </td>
+                    </tr>
+                </form>
+            </table>
+            <!-- ログイン画面に戻る -->
+            <a href="../" class="back">ログイン画面に戻る</a>
+        </div>
+        <!-- 登録工程が終わり、if文に戻る? -->
+        {%  endif %}
+
+    </div>
+
+</body>
+
+</html>

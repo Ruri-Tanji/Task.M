@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task.M_ログイン</title>
+    <meta charset="utf-8">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../../static/img/icon.png">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+    <div class="content">
+        <h1></h1>
+        <div id="title">
+            <span class="title">Task.M</span>
+        </div>
+        <!--ログインフォーム-->
+        <form name="login_form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td>
+                        <label for="userid">ユーザーID</label>
+                        <br>
+                        <input type="text" name="userid" class="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">パスワード</label>
+                        <br>
+                        <input type="password" name="password" class="text">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" class="btn" value="ログイン">
+        </form>
+        <h1></h1>
+
+        <!-- 新規登録画面へ -->
+        <a href="{% url 'accounts' %}" class="new">アカウント新規登録はこちら</a>
+
+    </div>
+
+</body>
+
+</html>

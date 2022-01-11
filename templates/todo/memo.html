@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task.M_Memo</title>
+    <meta charset="utf-8">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../../static/img/icon.png">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/home7.css' %}">
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header id="header">
+        <div class="wrapper">
+            <p>Task.M</p>
+            <nav>
+                <!-- アカウント名表示 -->
+                <ul>
+                    {{ user.username }}さん
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツまとめたもの -->
+    <div id="main">
+        <!-- 左メニュー -->
+        <div id="menu">
+            <ul>
+                <li><a href="../">ToDo</a></li>
+                <li><a href="">メモ</a></li>
+            </ul>
+            <button type="submit" class="exit" onclick="location.href='../../'">退室</button>
+        </div>
+        <!-- 右側のコンテンツ -->
+        <div id="contents">
+            <!-- Todoリストの表示 -->
+            <div id="app">
+                <h1 id="tit">Memo <a class="change" href="../hand/">　ー手書き入力に変更ー</a></h1>
+                <div>
+                    <!-- viewsのcreate -->
+                    <form action="{% url 'memo_create' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="memo_content">
+                            <textarea name="text" placeholder="テキスト" class="memo_detail" required="required"></textarea>
+                        </div>
+                        <input type="submit" value="投稿" class="memo_btn" />
+                    </form>
+                </div>
+                <div class="fusen">
+                    {% for memo_list in memo_lists %}
+                    <ul>
+                        <!-- 内容表示 -->
+                        <!--投稿日はMM/DDで表示-->
+                        <li>{{ memo_list.text }}</li>
+                        <li>
+                            <p>投稿日：{{ memo_list.time.month }}/{{ memo_list.time.day }} </p>
+                        </li>
+                        <li><a href="{% url 'memo_delete' memo_list.id %}">削除</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div><!-- /app -->
+        </div> <!-- /contents -->
+    </div><!-- /main -->
+
+</body>
+
+</html>
